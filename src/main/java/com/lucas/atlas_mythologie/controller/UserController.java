@@ -1,10 +1,12 @@
-package controller;
+package com.lucas.atlas_mythologie.controller;
 
-import model.User;
+import com.lucas.atlas_mythologie.model.User;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
-import service.UserService;
+import com.lucas.atlas_mythologie.service.UserService;
 
 import java.util.Optional;
 
@@ -24,5 +26,10 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
+    }
+
+    @GetMapping("/csrf")
+    public CsrfToken getCsrfToken(HttpServletRequest request){
+        return (CsrfToken) request.getAttribute("_csrf");
     }
 }

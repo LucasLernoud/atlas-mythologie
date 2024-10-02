@@ -1,6 +1,6 @@
-package service;
+package com.lucas.atlas_mythologie.service;
 
-import model.User;
+import com.lucas.atlas_mythologie.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

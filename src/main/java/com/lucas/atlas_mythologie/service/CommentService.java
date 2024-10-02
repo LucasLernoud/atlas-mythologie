@@ -1,6 +1,6 @@
-package service;
+package com.lucas.atlas_mythologie.service;
 
-import model.Comment;
+import com.lucas.atlas_mythologie.model.Comment;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

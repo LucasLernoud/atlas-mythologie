@@ -1,17 +1,19 @@
-package service.impl;
+package com.lucas.atlas_mythologie.service.impl;
 
-import model.Comment;
-import model.Myth;
-import model.User;
+import com.lucas.atlas_mythologie.model.Comment;
+import com.lucas.atlas_mythologie.model.Myth;
+import com.lucas.atlas_mythologie.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.CommentRepository;
-import repository.MythRepository;
-import repository.UserRepository;
-import service.CommentService;
+import com.lucas.atlas_mythologie.repository.CommentRepository;
+import com.lucas.atlas_mythologie.repository.MythRepository;
+import com.lucas.atlas_mythologie.repository.UserRepository;
+import com.lucas.atlas_mythologie.service.CommentService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CommentServiceImpl implements CommentService {
 
     @Autowired

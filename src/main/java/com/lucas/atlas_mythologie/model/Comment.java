@@ -1,4 +1,4 @@
-package model;
+package com.lucas.atlas_mythologie.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

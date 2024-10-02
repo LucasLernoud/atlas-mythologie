@@ -1,14 +1,13 @@
-package controller;
+package com.lucas.atlas_mythologie.controller;
 
-import model.Myth;
+import com.lucas.atlas_mythologie.model.Myth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.MythService;
+import com.lucas.atlas_mythologie.service.MythService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/myths")

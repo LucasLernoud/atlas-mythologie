@@ -1,8 +1,8 @@
-package repository;
+package com.lucas.atlas_mythologie.repository;
 
-import model.Comment;
-import model.Myth;
-import model.User;
+import com.lucas.atlas_mythologie.model.Comment;
+import com.lucas.atlas_mythologie.model.Myth;
+import com.lucas.atlas_mythologie.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

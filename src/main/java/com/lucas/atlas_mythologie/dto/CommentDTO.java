@@ -1,4 +1,4 @@
-package dto;
+package com.lucas.atlas_mythologie.dto;
 
 import lombok.Data;
 

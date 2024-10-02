@@ -1,13 +1,12 @@
-package controller;
+package com.lucas.atlas_mythologie.controller;
 
-import dto.CommentDTO;
-import model.Comment;
-import model.User;
+import com.lucas.atlas_mythologie.dto.CommentDTO;
+import com.lucas.atlas_mythologie.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.CommentService;
-import service.UserService;
+import com.lucas.atlas_mythologie.service.CommentService;
+import com.lucas.atlas_mythologie.service.UserService;
 
 import java.util.List;
 import java.util.Optional;

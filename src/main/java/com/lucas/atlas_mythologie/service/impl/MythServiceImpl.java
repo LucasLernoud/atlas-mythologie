@@ -1,12 +1,14 @@
-package service.impl;
+package com.lucas.atlas_mythologie.service.impl;
 
-import model.Myth;
+import com.lucas.atlas_mythologie.model.Myth;
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.MythRepository;
-import service.MythService;
+import com.lucas.atlas_mythologie.repository.MythRepository;
+import com.lucas.atlas_mythologie.service.MythService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MythServiceImpl implements MythService {
     @Autowired
     private MythRepository mythRepository;

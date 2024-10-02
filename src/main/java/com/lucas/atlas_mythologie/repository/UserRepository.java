@@ -1,6 +1,6 @@
-package repository;
+package com.lucas.atlas_mythologie.repository;
 
-import model.User;
+import com.lucas.atlas_mythologie.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {
