@@ -23,13 +23,19 @@ public class UserController {
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
-    @GetMapping("/csrf")
-    public CsrfToken getCsrfToken(HttpServletRequest request){
-        return (CsrfToken) request.getAttribute("_csrf");
+    @GetMapping("/login")
+    public String login(@RequestBody  User user){
+        userService.verify(user);
+        return "success";
     }
+
+//    @GetMapping("/csrf")
+//    public CsrfToken getCsrfToken(HttpServletRequest request){
+//        return (CsrfToken) request.getAttribute("_csrf");
+//    }
 }

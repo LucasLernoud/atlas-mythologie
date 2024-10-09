@@ -14,4 +14,6 @@ public interface UserService {
     public User createUser(User user);
 
     public Optional<User> findByUsername(String username);
+
+    String verify(User user);
 }
