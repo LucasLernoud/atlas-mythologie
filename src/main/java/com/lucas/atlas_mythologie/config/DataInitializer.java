@@ -14,15 +14,15 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (roleRepository.findByName("ROLE_ADMIN").isEmpty()) {
+        if (roleRepository.findByName("ADMIN").isEmpty()) {
             Role adminRole = new Role();
-            adminRole.setName("ROLE_ADMIN");
+            adminRole.setName("ADMIN");
             roleRepository.save(adminRole);
         }
 
-        if (roleRepository.findByName("ROLE_USER").isEmpty()) {
+        if (roleRepository.findByName("USER").isEmpty()) {
             Role userRole = new Role();
-            userRole.setName("ROLE_USER");
+            userRole.setName("USER");
             roleRepository.save(userRole);
         }
     }
