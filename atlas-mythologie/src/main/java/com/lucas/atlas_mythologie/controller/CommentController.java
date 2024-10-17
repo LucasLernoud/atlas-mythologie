@@ -37,19 +37,6 @@ public class CommentController {
     }
 
 
-//    @GetMapping("/user/{userId}")
-//    public ResponseEntity<List<Comment>> getCommentsByUser(@PathVariable Long userId) {
-//        Optional<User> user = userService.findById(userId);
-//
-//        if (user.isEmpty()) {
-//            return ResponseEntity.notFound().build();  // Si l'utilisateur n'existe pas, on retourne un 404
-//        }
-//
-//        List<Comment> comments = commentService.findCommentsByUser(userId);
-//        return ResponseEntity.ok(comments);  // Sinon, on retourne les commentaires (même s'ils sont vides)
-//    }
-
-
     @GetMapping("/myth/{mythId}")
     public ResponseEntity<List<Comment>> getCommentsByMyth(@PathVariable Long mythId) {
         List<Comment> comments = commentService.findCommentsByMyth(mythId);

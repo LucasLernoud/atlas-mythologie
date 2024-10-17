@@ -1,9 +1,12 @@
 package com.lucas.atlas_mythologie.service;
 
+import com.lucas.atlas_mythologie.dto.AuthResponseDTO;
+import com.lucas.atlas_mythologie.model.Myth;
 import com.lucas.atlas_mythologie.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public interface UserService {
@@ -13,7 +16,9 @@ public interface UserService {
 
     public User createUser(User user);
 
-    public Optional<User> findByUsername(String username);
+    public User findByUsername(String username);
 
-    String verify(User user);
+    AuthResponseDTO verify(User user);
+
+    Set<Myth> getFavoriteMyths(Long userId);
 }
