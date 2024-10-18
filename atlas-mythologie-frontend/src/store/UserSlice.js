@@ -15,6 +15,24 @@ export const loginUser = createAsyncThunk(
     }
 )
 
+export const registerAndLoginUser = createAsyncThunk(
+    'user/registerAndLoginUser',
+    async (userData, { dispatch }) => {
+        //inscription
+        const registerResponse = await axios.post(`${hostName}api/users/register`, userData);
+
+        //login
+        if (registerResponse.data) {
+            const loginResponse = await dispatch(loginUser({
+                username: userData.username,
+                password: userData.password
+            }));
+
+            return loginResponse.payload;
+        }
+    }
+);
+
 const userSlice = createSlice({
     name: 'user',
     initialState:{

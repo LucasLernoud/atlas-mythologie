@@ -6,7 +6,6 @@ function LoginPage() {
     <>
       <div>LoginPage</div>
       <br />
-      
       <LoginForm />
     </>
 

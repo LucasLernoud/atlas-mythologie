@@ -56,18 +56,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-//    @Override
-//    public AuthResponseDTO verify(User user) {
-//        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-//
-//        if (authentication.isAuthenticated()){
-//            String token = jwtService.generateToken(user.getUsername());
-//            return new AuthResponseDTO(token, user.getUsername(), user.getId());
-//        }
-//        return null;
-//    }
-
-
     @Override
     public AuthResponseDTO verify(User user) {
         Authentication authentication = authenticationManager.authenticate(
