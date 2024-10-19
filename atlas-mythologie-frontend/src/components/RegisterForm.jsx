@@ -1,47 +1,49 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerAndLoginUser } from '../store/UserSlice';
-import { useNavigate } from 'react-router-dom';
 
 export const RegisterForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
+    const { loading, error } = useSelector((state) => state.user);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
-    const handleRegisterSubmit = async (e) => {
+    const handleRegisterSubmit = (e) => {
         e.preventDefault();
+        
+        // Vérification que les deux mots de passe correspondent
+        if (password !== confirmPassword) {
+            setPasswordError('Les mots de passe ne sont pas identiques.');
+            return;
+        }
+
+        setPasswordError('');  // Réinitialiser l'erreur si les mots de passe correspondent
         const userData = { username, password };
         
-        // Inscription puis connexion automatique
-        const result = await dispatch(registerAndLoginUser(userData));
-
-        // Si tout est OK, rediriger vers une autre page (ex: la page d'accueil)
-        if (result.payload) {
-            navigate('/');
-        }
-    };
+        dispatch(registerAndLoginUser(userData));
+    }
 
     return (
-        <form onSubmit={handleRegisterSubmit}>
-            <label>Nom d'utilisateur</label>
-            <input 
-                type="text" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)} 
-                required
-            />
+        <form className="RegisterForm" onSubmit={handleRegisterSubmit}>
+            <label>Pseudo</label>
+            <input type="text" required className="form-field" value={username} onChange={(e) => setUsername(e.target.value)} />
+            
             <br />
             <label>Mot de passe</label>
-            <input 
-                type="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} 
-                required
-            />
+            <input type="password" required className="form-field" value={password} onChange={(e) => setPassword(e.target.value)} />
+            
             <br />
-            <button type="submit">S'inscrire</button>
+            <label>Confirmez le mot de passe</label>
+            <input type="password" required className="form-field" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+            
+            {passwordError && <div role="alert" style={{ color: 'red' }}>{passwordError}</div>}
+            
+            <br />
+            <button type="submit" className="form-btn">{loading ? 'Chargement...' : 'S\'inscrire'}</button>
+            {error && <div role="alert" style={{ color: 'red' }}>{error}</div>}
         </form>
     );
-};
+}
