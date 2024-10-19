@@ -1,6 +1,7 @@
 package com.lucas.atlas_mythologie.controller;
 
 import com.lucas.atlas_mythologie.dto.AuthResponseDTO;
+import com.lucas.atlas_mythologie.dto.RegisterRequestDTO;
 import com.lucas.atlas_mythologie.model.Myth;
 import com.lucas.atlas_mythologie.model.User;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,8 +31,27 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<?> createUser(@RequestBody RegisterRequestDTO registerRequest) {
+
+        // Vérification que les deux mots de passe correspondent
+        if (!registerRequest.getPassword().equals(registerRequest.getConfirmPassword())) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("Les mots de passe ne sont pas identiques.");
+        }
+
+        if (userService.isUsernameTaken(registerRequest.getUsername())) {
+            return ResponseEntity
+                    .status(HttpStatus.CONFLICT)
+                    .body("Nom d'utilisateur déjà pris");
+        }
+
+        User newUser = new User();
+        newUser.setUsername(registerRequest.getUsername());
+        newUser.setPassword(registerRequest.getPassword());
+
+        userService.createUser(newUser);
+        return ResponseEntity.ok("Utilisateur créé avec succès");
     }
 
     @PostMapping("/login")

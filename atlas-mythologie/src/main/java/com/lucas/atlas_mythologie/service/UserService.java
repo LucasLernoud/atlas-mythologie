@@ -21,4 +21,6 @@ public interface UserService {
     AuthResponseDTO verify(User user);
 
     Set<Myth> getFavoriteMyths(Long userId);
+
+    boolean isUsernameTaken(String username);
 }

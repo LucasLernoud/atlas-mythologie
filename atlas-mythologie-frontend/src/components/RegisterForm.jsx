@@ -21,7 +21,7 @@ export const RegisterForm = () => {
         }
 
         setPasswordError('');  // Réinitialiser l'erreur si les mots de passe correspondent
-        const userData = { username, password };
+        const userData = { username, password, confirmPassword };
         
         dispatch(registerAndLoginUser(userData));
     }
